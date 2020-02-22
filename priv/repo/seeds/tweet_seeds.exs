@@ -1,37 +1,44 @@
 alias MyTwitter.Repo
-alias MyTwitter.Management.User
+alias MyTwitter.Management.Tweet
 
-Repo.insert! %User{
-  email: "antonio@hotmail.com",
-  name: "Antonio Abrantes",
-  nickname: "antonio_abrantes",
-  password: "1234"
+Repo.insert! %Tweet{
+  user_id: 2,
+  text: "My first tweet",
+  likes: 50,
+  created_at: NaiveDateTime.add(~N[2020-01-02 00:29:10], 2)
 }
 
-Repo.insert! %User{
-  email: "ana@hotmail.com",
-  name: "Ana Paula",
-  nickname: "ana_paula",
-  password: "1234"
+Repo.insert! %Tweet{
+  user_id: 2,
+  text: "My second tweet",
+  likes: 26,
+  created_at: NaiveDateTime.add(~N[2020-01-02 10:29:10], 2)
 }
 
-Repo.insert! %User{
-  email: "jonas@hotmail.com",
-  name: "Jonas Qualquer",
-  nickname: "jonas_q",
-  password: "1234"
+Repo.insert! %Tweet{
+  user_id: 1,
+  text: "My second tweet",
+  likes: 16,
+  created_at: NaiveDateTime.add(~N[2020-03-02 00:29:10], 2)
 }
 
-Repo.insert! %User{
-  email: "fulano@hotmail.com",
-  name: "Fulano de Tal",
-  nickname: "fulano_t",
-  password: "1234",
+Repo.insert! %Tweet{
+  user_id: 1,
+  text: "My Third tweet",
+  likes: 19,
+  created_at: NaiveDateTime.add(~N[2020-05-02 00:29:10], 2)
 }
 
-Repo.insert! %User{
-  email: "ciclano@hotmail.com",
-  name: "Ciclano de Qualquer",
-  nickname: "ciclano_q",
-  password: "1234"
+Repo.insert! %Tweet{
+  user_id: 3,
+  text: "My first tweet",
+  likes: 19,
+  created_at: NaiveDateTime.add(~N[2020-01-02 00:29:10], 2)
+}
+
+Repo.insert! %Tweet{
+  user_id: 3,
+  text: "My second tweet",
+  likes: 12,
+  created_at: NaiveDateTime.add(~N[2020-02-02 00:29:10], 2)
 }
