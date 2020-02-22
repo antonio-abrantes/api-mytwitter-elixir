@@ -13,14 +13,12 @@ defmodule MyTwitterWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", MyTwitterWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
-  end
-
   # Other scopes may use custom stacks.
-  # scope "/api", MyTwitterWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", MyTwitterWeb do
+    pipe_through :api
+
+    resources "/users", UserController, except: [:new]
+    resources "/tweets", TweetController, except: [:new]
+
+  end
 end
