@@ -1,8 +1,12 @@
 defmodule MyTwitterWeb.TweetController do
   use MyTwitterWeb, :controller
 
+  import Ecto.Query
+  alias MyTwitter.Repo
+
   alias MyTwitter.Management
   alias MyTwitter.Management.Tweet
+  alias MyTwitter.Management.User
 
   action_fallback MyTwitterWeb.FallbackController
 
@@ -23,6 +27,15 @@ defmodule MyTwitterWeb.TweetController do
   def show(conn, %{"id" => id}) do
     tweet = Management.get_tweet!(id)
     render(conn, "show.json", tweet: tweet)
+  end
+
+  def show_all_by_id(conn, %{"user_id" => user_id}) do
+    query = from u in Tweet,
+    where: u.user_id == ^user_id,
+    select: u
+
+    tweets = Repo.all(query)
+    render(conn, "index.json", tweets: tweets)
   end
 
   def update(conn, %{"id" => id, "tweet" => tweet_params}) do

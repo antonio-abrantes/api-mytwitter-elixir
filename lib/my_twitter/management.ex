@@ -22,6 +22,24 @@ defmodule MyTwitter.Management do
   end
 
   @doc """
+  Returns the list of tweets.
+
+  ## Examples
+
+      iex> list_tweets_by_id(%Tweet{} = tweet)
+      [%Tweet{}, ...]
+
+  """
+  # def list_tweets_by_id(%{"user_id" => user_id}) do
+  #   query = from u in Tweet,
+  #   where: u.user_id == ^user_id,
+  #   select: u
+
+  #   # Repo.all(from u in Tweet, select: u.user_id)
+  #   Repo.all(query)
+  # end
+
+  @doc """
   Gets a single tweet.
 
   Raises `Ecto.NoResultsError` if the Tweet does not exist.
@@ -197,4 +215,5 @@ defmodule MyTwitter.Management do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
 end
