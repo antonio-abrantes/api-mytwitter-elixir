@@ -21,7 +21,7 @@ To start this project:
       pool_size: 10
     ``` 
   * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup && mix ecto.create && mix ecto.migrate`
+  * Create and migrate your database with `mix ecto.setup`
   * Execute this command seeds for insert data demo in database `mix run priv\repo\seeds\user_seeds.exs` and `mix run priv\repo\seeds\tweet_seeds.exs`
   * Install Node.js dependencies with `cd assets && npm install`
   * Start Phoenix endpoint with `mix phx.server`

@@ -10,6 +10,40 @@ defmodule MyTwitterWeb.TweetController do
 
   action_fallback MyTwitterWeb.FallbackController
 
+  @doc """
+
+    Routes of Interface
+
+  """
+
+  def new(conn, _params) do
+    changeset = Tweet.changeset(%Tweet{}, %{})
+    render(conn, "new.html", changeset: changeset)
+  end
+
+  def create_new(conn, %{"tweet" => tweet_params}) do
+    case Management.create_tweet(tweet_params) do
+      {:ok, tweet} ->
+        conn
+        |> put_flash(:info, "Tweet Created!")
+        |> redirect(to: Routes.page_path(conn, :home))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def show_tweets(conn, %{"id" => id}) do
+    # room = Management.get_room!(id)
+    # render(conn, "show.html", room: room)
+  end
+
+  @doc """
+
+    Routes of API
+
+  """
+
   def index(conn, _params) do
     tweets = Management.list_tweets()
     render(conn, "index.json", tweets: tweets)
