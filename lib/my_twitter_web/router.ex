@@ -17,8 +17,8 @@ defmodule MyTwitterWeb.Router do
   scope "/api", MyTwitterWeb do
     pipe_through :api
 
-    resources "/users", UserController, except: [:new, :edit]
-    resources "/tweets", TweetController, except: [:new, :edit]
+    resources "/users", UserController, only: [:create, :show]
+    resources "/tweets", TweetController, only: [:create, :show]
     get "/tweets/user/:user_id", TweetController, :show_all_by_id
   end
 end
