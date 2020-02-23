@@ -1,0 +1,36 @@
+  
+<h2>Listing Users</h2>
+
+<table class="table">
+  <thead>
+    <tr >
+      <th>Id</th>
+      <th>Nickname</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>
+        Actions
+      </th>
+    </tr>
+  </thead>
+<tbody>
+    <%= for user <- @users do %>
+    <tr>
+      <td class="text-center">
+        <%= user.id %>
+      </td>
+      <td><%= user.nickname %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td>
+        <%= link "Create", to: Routes.tweet_path(@conn, :new), class: "btn btn-success" %>
+        <%= link "List", to: Routes.tweet_path(@conn, :list_by_id, user.id), class: "btn btn-secondary" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<div class="page-header">             
+  
+</div>

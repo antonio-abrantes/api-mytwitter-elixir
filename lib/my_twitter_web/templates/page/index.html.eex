@@ -1,11 +1,26 @@
 <section class="phx-hero">
   <h1><%= gettext "Welcome to %{name}!", name: "My Twitter API" %></h1>
 </section>
-<div class="container">
+<div class="container ">
   <div class="row">
-    <div class="col-12">
+    <div class="col-3">
       <div class="page-header">             
-        <%= link "Create tweet", to: Routes.tweet_path(@conn, :new), class: "btn btn-success" %>
+        <%= link "List Users", to: Routes.user_path(@conn, :list), class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="page-header">             
+        <%= link "Create User", to: Routes.user_path(@conn, :new), class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+    </div>
+    <div class="col-3 ">
+      <div class="page-header">             
+        <%= link "Create tweet", to: Routes.tweet_path(@conn, :new), class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="page-header">             
+        <%= link "List All Tweets", to: Routes.tweet_path(@conn, :list), class: "btn btn-primary btn-lg btn-block" %>
       </div>
     </div>
   </div>

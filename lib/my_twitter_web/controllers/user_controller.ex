@@ -6,6 +6,32 @@ defmodule MyTwitterWeb.UserController do
 
   action_fallback MyTwitterWeb.FallbackController
 
+  def list(conn, _params) do
+    users = Management.list_users()
+    render(conn, "index.html", users: users)
+  end
+
+  def create_new(conn, %{"user" => user_params}) do
+    case Management.create_user(user_params) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "User Created!")
+        |> redirect(to: Routes.page_path(conn, :home))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
+  end
+
+  def new(conn, _params) do
+    changeset = User.changeset(%User{}, %{})
+    render(conn, "new.html", changeset: changeset)
+  end
+
+  @doc """
+    Methods of API
+  """
+
   def index(conn, _params) do
     users = Management.list_users()
     render(conn, "index.json", users: users)

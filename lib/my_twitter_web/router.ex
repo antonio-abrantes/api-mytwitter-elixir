@@ -18,8 +18,13 @@ defmodule MyTwitterWeb.Router do
 
     get "/", PageController, :home
     get "/tweet/new", TweetController, :new
+    get "/tweets", TweetController, :list
+    get "/tweets/:id", TweetController, :list_by_id
     post "/tweet", TweetController, :create_new
-    #get "/rooms/:id", RoomController, :show
+    get "/users", UserController, :list
+    get "/user/new", UserController, :new
+    post "/user", UserController, :create_new
+    delete "/user", UserController, :delete
 
   end
 

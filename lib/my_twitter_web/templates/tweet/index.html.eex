@@ -1,1 +1,26 @@
-Teste
+<h2>Listing Users</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User Id</th>
+      <th>Text</th>
+      <th>Likes</th>
+      <th>Created at</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for tweet <- @tweets do %>
+    <tr>
+      <td><%= tweet.user_id %></td>
+      <td><%= tweet.text %></td>
+      <td><%= tweet.likes %></td>
+      <td><%= tweet.created_at %></td>
+      <td class="text-right">
+       
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

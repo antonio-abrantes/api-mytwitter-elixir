@@ -15,6 +15,19 @@ defmodule MyTwitterWeb.TweetController do
     Routes of Interface
 
   """
+  def list_by_id(conn, %{"id" => id}) do
+    query = from u in Tweet,
+    where: u.user_id == ^id,
+    select: u
+
+    tweets = Repo.all(query)
+    render(conn, "index.html", tweets: tweets)
+  end
+
+  def list(conn, _params) do
+    tweets = Management.list_tweets()
+    render(conn, "index.html", tweets: tweets)
+  end
 
   def new(conn, _params) do
     changeset = Tweet.changeset(%Tweet{}, %{})
