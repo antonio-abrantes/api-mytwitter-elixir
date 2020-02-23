@@ -16,5 +16,9 @@ defmodule MyTwitter.Management.User do
     user
     |> cast(attrs, [:name, :nickname, :email, :password])
     |> validate_required([:name, :nickname, :email, :password])
+    |> unique_constraint(:name)
+    |> validate_length(:name, min: 5, max: 100)
+    |> validate_length(:password, min: 4)
+    |> validate_format(:email, ~r/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
   end
 end
